@@ -231,7 +231,7 @@ public class QuizService {// 注意這是最外層
 		 * 準備好資料，最後去問資料庫「請更新 ID 是 -5 的資料」，不如在 API 一進來就攔截掉。
 		 */
 		if (req.getQuizId() <= 0) {
-			return new UpdateRes(ReplyMessage.QUIZ_ID_ERRORR.getCode(), ReplyMessage.QUIZ_ID_ERRORR.getMessage());
+			return new UpdateRes(ReplyMessage.QUIZ_ID_ERROR.getCode(), ReplyMessage.QUIZ_ID_ERROR.getMessage());
 		}
 		/*
 		 * 檢查req中的quizId和：每個Qustion中的quizID是否相同
@@ -342,14 +342,14 @@ return new UpdateRes(ReplyMessage.SUCCESS.getCode(), //
 		 * 檢查參數
 		 */
 		if(CollectionUtils.isEmpty(req.getQuizIdList())) {
-			return new BasicRes(ReplyMessage.QUIZ_ID_ERRORR.getCode(),//		
-					ReplyMessage.QUIZ_ID_ERRORR.getMessage());
+			return new BasicRes(ReplyMessage.QUIZ_ID_ERROR.getCode(),//		
+					ReplyMessage.QUIZ_ID_ERROR.getMessage());
 			
 		}
 		for(int id :req.getQuizIdList()) {
 			if(id<=0) {
-				return new BasicRes(ReplyMessage.QUIZ_ID_ERRORR.getCode(),//		
-						ReplyMessage.QUIZ_ID_ERRORR.getMessage());
+				return new BasicRes(ReplyMessage.QUIZ_ID_ERROR.getCode(),//		
+						ReplyMessage.QUIZ_ID_ERROR.getMessage());
 			}
 		}
 		try {
@@ -371,8 +371,8 @@ return new UpdateRes(ReplyMessage.SUCCESS.getCode(), //
 	public BasicRes delete(int quizId) {
 		//參數檢查
 		if(quizId<=0) {
-			return new BasicRes(ReplyMessage.QUIZ_ID_ERRORR.getCode(),//		
-					ReplyMessage.QUIZ_ID_ERRORR.getMessage());
+			return new BasicRes(ReplyMessage.QUIZ_ID_ERROR.getCode(),//		
+					ReplyMessage.QUIZ_ID_ERROR.getMessage());
 			
 		}
 		try {
